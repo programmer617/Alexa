@@ -1,7 +1,7 @@
 {
-  "name": "skill-sample-js-trivia",
+  "name": "Alexa",
   "version": "1.0.0",
-  "description": "A simple trivia skill i18n version.",
+  "description": "A simple request PACE skill.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,6 +14,8 @@
   "author": "Amazon.com",
   "license": "Apache-2.0",
   "dependencies": {
-    "alexa-sdk": "^1.0.7"
+    "alexa-sdk": "^1.0.7",
+    "form-data": "^2.1.2",
+    "request": "^2.80.0"
   }
 }
