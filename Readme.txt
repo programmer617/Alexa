@@ -1,0 +1,1 @@
+This the readme for the Homesite Alexa project
