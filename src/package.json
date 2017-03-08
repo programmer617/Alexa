@@ -1,7 +1,7 @@
 {
   "name": "Alexa",
   "version": "1.0.0",
-  "description": "A simple request PACE skill.",
+  "description": "A homesite homeowners skill.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,7 @@
   "keywords": [
     "alexa",
     "skill",
-    "trivia"
+    "homeowners"
   ],
   "author": "Amazon.com",
   "license": "Apache-2.0",
