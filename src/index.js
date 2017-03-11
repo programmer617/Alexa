@@ -22,7 +22,7 @@ var options =
       "Authorization": "Bearer 5fcef407807365c684f0bdefb9819d3c"
     }
   }
-}
+} 
 
 
 /**
@@ -99,15 +99,44 @@ var languageString = {
 };
 
 var Alexa = require("alexa-sdk");
+var https = require("https");
+
 var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
 
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
     alexa.appId = APP_ID;
     // To enable string internationalization (i18n) features, set a resources object.
-    alexa.resources = languageString;
-    alexa.registerHandlers(newSessionHandlers, startStateHandlers, triviaStateHandlers, helpStateHandlers);
+    //alexa.resources = languageString;
+    //alexa.registerHandlers(newSessionHandlers, startStateHandlers, triviaStateHandlers, helpStateHandlers);
+	alexa.registerHandlers(balanceHandlers);
     alexa.execute();
+};
+
+var balanceHandlers = {
+    "BalanceIntent":function(){
+		// Call Pace Billing
+		const req = https.request(options.options, (res) => {
+			let body = '';
+			console.log('Status:', res.statusCode);
+			console.log('Headers:', JSON.stringify(res.headers));
+			res.setEncoding('utf8');
+			res.on('data', (chunk) => body += chunk);
+			res.on('end', () => {
+				console.log('Successfully processed HTTPS response');
+				// If we know it's JSON, parse it
+				if (res.headers['content-type'] === 'application/json') {
+					body = JSON.parse(body);
+					console.log('Body: ', body);
+					this.emit(":tell","Your balance is " + body.balance);
+				}
+				//callback(null, body);
+			});
+		});
+		//req.on('error', callback);
+		//req.write(JSON.stringify(event.data));
+		req.end();
+	}
 };
 
 var newSessionHandlers = {
@@ -132,7 +161,7 @@ var newSessionHandlers = {
 var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
     "StartGame": function (newGame) {
 		
-		// Call Pace Billing
+		/* // Call Pace Billing
 		const req = https.request(options, (res) => {
 			let body = '';
 			console.log('Status:', res.statusCode);
@@ -151,7 +180,7 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
 		});
 		req.on('error', callback);
 		req.write(JSON.stringify(event.data));
-		req.end();
+		req.end(); */
 		
         var speechOutput = newGame ? this.t("NEW_GAME_MESSAGE", this.t("GAME_NAME")) + this.t("WELCOME_MESSAGE", GAME_LENGTH.toString()) : "";
         // Select GAME_LENGTH questions for the game
