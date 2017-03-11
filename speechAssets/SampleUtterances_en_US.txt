@@ -4,11 +4,6 @@ AnswerIntent is it {Answer}
 AnswerIntent {Answer} is my answer
 AnswerIntent {Answer}
 
-AMAZON.StartOverIntent start game
-AMAZON.StartOverIntent new game
-AMAZON.StartOverIntent start
-AMAZON.StartOverIntent start new game
-
 DontKnowIntent i don't know
 DontKnowIntent don't know
 DontKnowIntent skip
@@ -17,3 +12,127 @@ DontKnowIntent who knows
 DontKnowIntent i don't know this question
 DontKnowIntent i don't know that one
 DontKnowIntent dunno
+
+BalanceIntent my outstanding balance
+BalanceIntent my balance
+BalanceIntent outstanding balance
+BalanceIntent balance
+BalanceIntent what is my outstanding balance
+BalanceIntent what is my balance
+BalanceIntent check my dues
+BalanceIntent check my balance
+BalanceIntent check my balances
+BalanceIntent check my outstanding payment
+BalanceIntent check my payment dues
+BalanceIntent check my payment due
+BalanceIntent check my due payment
+BalanceIntent check my 
+BalanceIntent check my outstanding balance
+BalanceIntent check my remaining installment
+BalanceIntent check my remaining dues
+BalanceIntent check my remaining amount
+BalanceIntent get me my dues
+BalanceIntent get me my balance
+BalanceIntent get me my balances
+BalanceIntent get me my outstanding payment
+BalanceIntent get me my payment dues
+BalanceIntent get me my payment due
+BalanceIntent get me my due payment
+BalanceIntent get me my 
+BalanceIntent get me my outstanding balance
+BalanceIntent get me my remaining installment
+BalanceIntent get me my remaining dues
+BalanceIntent get me my remaining amount
+BalanceIntent give me my outstanding balance
+BalanceIntent give me my outstanding payment info
+BalanceIntent give me my outstanding payment information
+BalanceIntent give me my outstanding payment dues
+BalanceIntent give me my outstanding dues
+BalanceIntent give me my balance
+BalanceIntent give me my payment info
+BalanceIntent give me my payment information
+BalanceIntent give me my payment dues
+BalanceIntent give me my dues
+BalanceIntent give my outstanding balance
+BalanceIntent give my outstanding payment info
+BalanceIntent give my outstanding payment information
+BalanceIntent give my outstanding payment dues
+BalanceIntent give my outstanding dues
+BalanceIntent give my balance
+BalanceIntent give my payment info
+BalanceIntent give my payment information
+BalanceIntent give my payment dues
+BalanceIntent give my dues
+BalanceIntent how much do I owe
+BalanceIntent how much I owe
+BalanceIntent what do I owe
+BalanceIntent How much is due
+BalanceIntent How much balance is due
+BalanceIntent what is my account balance
+BalanceIntent find out my dues
+BalanceIntent find out my balance
+BalanceIntent find out my balances
+BalanceIntent find out my outstanding payment
+BalanceIntent find out my payment dues
+BalanceIntent find out my payment due
+BalanceIntent find out my due payment
+BalanceIntent find out my 
+BalanceIntent find out my outstanding balance
+BalanceIntent find out my remaining installment
+BalanceIntent find out my remaining dues
+BalanceIntent find out my dues remaining
+BalanceIntent what is my unpaid amount
+BalanceIntent what is my unpaid bill
+BalanceIntent what is the unpaid amount
+BalanceIntent what is the unpaid bill
+BalanceIntent what is my pending claim
+BalanceIntent what is the pending claim
+BalanceIntent How much am i liable to pay
+
+
+
+
+
+
+PaymentIntent make a payment
+PaymentIntent make a payment of {payment}
+PaymentIntent clear the balance
+PaymentIntent clear the payments
+PaymentIntent clear the dues
+PaymentIntent clear the bill
+PaymentIntent clear the outstanding
+PaymentIntent clear the debt
+PaymentIntent clear the claim
+PaymentIntent clear the remaining installment
+PaymentIntent clear my balance
+PaymentIntent clear my payments
+PaymentIntent clear my dues
+PaymentIntent clear my bill
+PaymentIntent clear my outstanding
+PaymentIntent clear my debt
+PaymentIntent clear my claim
+PaymentIntent clear my remaining installment
+PaymentIntent pay my dues
+PaymentIntent pay my bill
+PaymentIntent pay my balance
+PaymentIntent pay my outstanding
+PaymentIntent pay my remainder
+PaymentIntent pay my pending claim
+PaymentIntent pay my remaining installment
+PaymentIntent pay the dues
+PaymentIntent pay the bill
+PaymentIntent pay the balance
+PaymentIntent pay the outstanding amount
+PaymentIntent pay the remainder
+PaymentIntent pay the pending claim
+PaymentIntent pay the remaining amount
+PaymentIntent pay the remaining installment
+PaymentIntent pay off the entire balance
+PaymentIntent pay off the entire due amount
+PaymentIntent pay off the entire outstanding
+PaymentIntent pay off the entire claim amount
+PaymentIntent pay off the entire amount
+PaymentIntent pay off the entire bill amount
+PaymentIntent pay {payment}
+PaymentIntent pay a sum of {payment}
+PaymentIntent pay out {payment}
