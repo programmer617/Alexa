@@ -10,6 +10,21 @@ var GAME_STATES = {
 };
 var questions = require("./questions");
 
+var options = 
+{
+  "options": {
+    "hostname": "paceapi.homesitep2.com",
+    "port": 443,
+    "path": "/billing",
+    "method": "GET",
+    "headers": {
+      "User-Agent": "MyLambda/1.0.0 ( steve@ibm.com )",
+      "Authorization": "Bearer 5fcef407807365c684f0bdefb9819d3c"
+    }
+  }
+}
+
+
 /**
  * When editing your questions pay attention to your punctuation. Make sure you use question marks or periods.
  * Make sure the first answer is the correct one. Set at least ANSWER_COUNT answers, any extras will be shuffled in.
@@ -116,6 +131,28 @@ var newSessionHandlers = {
 
 var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
     "StartGame": function (newGame) {
+		
+		// Call Pace Billing
+		const req = https.request(options, (res) => {
+			let body = '';
+			console.log('Status:', res.statusCode);
+			console.log('Headers:', JSON.stringify(res.headers));
+			res.setEncoding('utf8');
+			res.on('data', (chunk) => body += chunk);
+			res.on('end', () => {
+				console.log('Successfully processed HTTPS response');
+				// If we know it's JSON, parse it
+				if (res.headers['content-type'] === 'application/json') {
+					body = JSON.parse(body);
+					console.log('Body: ', body);
+				}
+				callback(null, body);
+			});
+		});
+		req.on('error', callback);
+		req.write(JSON.stringify(event.data));
+		req.end();
+		
         var speechOutput = newGame ? this.t("NEW_GAME_MESSAGE", this.t("GAME_NAME")) + this.t("WELCOME_MESSAGE", GAME_LENGTH.toString()) : "";
         // Select GAME_LENGTH questions for the game
         var translatedQuestions = this.t("QUESTIONS");
