@@ -70,51 +70,48 @@ BalanceIntent look for my balance in the account
 BalanceIntent look for my balance
 
 
-
 PaymentIntent make a payment
 PaymentIntent make a payment of {payment}
+PaymentIntent clear the amount due
 PaymentIntent clear the balance
-PaymentIntent clear the payments
-PaymentIntent clear the dues
-PaymentIntent clear the Amount due
-PaymentIntent clear the bill
-PaymentIntent clear the outstanding
-PaymentIntent clear the debt
-PaymentIntent clear the claim
-PaymentIntent clear the remaining installment
+PaymentIntent clear the outstanding balance
+PaymentIntent clear the outstanding amount
+PaymentIntent clear the remaining balance
+PaymentIntent clear my amount due
 PaymentIntent clear my balance
-PaymentIntent clear my payments
-PaymentIntent clear my dues
-PaymentIntent clear my bill
-PaymentIntent clear my outstanding
-PaymentIntent clear my debt
-PaymentIntent clear my claim
-PaymentIntent clear my remaining installment
-PaymentIntent pay my dues
-PaymentIntent pay my bill
+PaymentIntent clear my outstanding balance
+PaymentIntent clear my outstanding amount
+PaymentIntent clear my remaining balance
+PaymentIntent pay my amount due
 PaymentIntent pay my balance
-PaymentIntent pay my outstanding
-PaymentIntent pay my remainder
-PaymentIntent pay my pending claim
-PaymentIntent pay my remaining installment
-PaymentIntent pay the dues
-PaymentIntent pay the bill
+PaymentIntent pay the amount due
 PaymentIntent pay the balance
+PaymentIntent pay the outstanding balance
 PaymentIntent pay the outstanding amount
-PaymentIntent pay the remainder
-PaymentIntent pay the pending claim
-PaymentIntent pay the remaining amount
-PaymentIntent pay the remaining installment
+PaymentIntent pay the remaining balance
+PaymentIntent pay off the entire amount due
 PaymentIntent pay off the entire balance
-PaymentIntent pay off the entire due amount
-PaymentIntent pay off the entire outstanding
-PaymentIntent pay off the entire claim amount
-PaymentIntent pay off the entire amount
-PaymentIntent pay off the entire bill amount
+PaymentIntent pay off the entire outstanding balance
+PaymentIntent pay off the entire outstanding amount
+PaymentIntent pay off the entire remaining balance
 PaymentIntent pay {payment}
 PaymentIntent pay a sum of {payment}
-PaymentIntent pay out {payment}
-
+PaymentIntent pay off {payment}
+PaymentIntent pay amount due in full
+PaymentIntent pay amount due
+PaymentIntent pay balance in full
+PaymentIntent pay balance
+PaymentIntent pay outstanding balance in full
+PaymentIntent pay outstanding balance
+PaymentIntent pay outstanding amount in full
+PaymentIntent pay outstanding amount
+PaymentIntent pay remaining balance in full
+PaymentIntent pay remaining balance
+PaymentIntent pay entire amount due
+PaymentIntent pay entire balance
+PaymentIntent pay entire outstanding balance
+PaymentIntent pay entire outstanding amount
+PaymentIntent pay entire remaining balance
 
 
 AmountDueIntent
