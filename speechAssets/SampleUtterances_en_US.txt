@@ -15,82 +15,59 @@ DontKnowIntent dunno
 
 BalanceIntent my outstanding balance
 BalanceIntent my balance
-BalanceIntent outstanding balance
-BalanceIntent balance
+BalanceIntent the outstanding balance
+BalanceIntent the balance
 BalanceIntent what is my outstanding balance
 BalanceIntent what is my balance
-BalanceIntent check my dues
 BalanceIntent check my balance
-BalanceIntent check my balances
-BalanceIntent check my outstanding payment
-BalanceIntent check my payment dues
-BalanceIntent check my payment due
-BalanceIntent check my due payment
-BalanceIntent check my 
 BalanceIntent check my outstanding balance
-BalanceIntent check my remaining installment
-BalanceIntent check my remaining dues
-BalanceIntent check my remaining amount
-BalanceIntent get me my dues
 BalanceIntent get me my balance
 BalanceIntent get me my balances
-BalanceIntent get me my outstanding payment
-BalanceIntent get me my payment dues
-BalanceIntent get me my payment due
-BalanceIntent get me my due payment
-BalanceIntent get me my 
 BalanceIntent get me my outstanding balance
-BalanceIntent get me my remaining installment
-BalanceIntent get me my remaining dues
-BalanceIntent get me my remaining amount
 BalanceIntent give me my outstanding balance
-BalanceIntent give me my outstanding payment info
-BalanceIntent give me my outstanding payment information
-BalanceIntent give me my outstanding payment dues
-BalanceIntent give me my outstanding dues
-BalanceIntent give me my balance
-BalanceIntent give me my payment info
-BalanceIntent give me my payment information
-BalanceIntent give me my payment dues
-BalanceIntent give me my dues
 BalanceIntent give my outstanding balance
-BalanceIntent give my outstanding payment info
-BalanceIntent give my outstanding payment information
-BalanceIntent give my outstanding payment dues
-BalanceIntent give my outstanding dues
 BalanceIntent give my balance
-BalanceIntent give my payment info
-BalanceIntent give my payment information
-BalanceIntent give my payment dues
-BalanceIntent give my dues
-BalanceIntent how much do I owe
-BalanceIntent how much I owe
-BalanceIntent what do I owe
-BalanceIntent How much is due
 BalanceIntent How much balance is due
 BalanceIntent what is my account balance
-BalanceIntent find out my dues
+BalanceIntent please check my balance
+BalanceIntent please get me my balance
+BalanceIntent please get me the balance
+BalanceIntent please get my balance
+BalanceIntent please get the balance
+BalanceIntent get me my balance
+BalanceIntent get me the balance
+BalanceIntent get my balance
+BalanceIntent get the balance
+BalanceIntent please get me the balance from the account
+BalanceIntent please get me my balance from the account
+BalanceIntent please get the balance from the account
+BalanceIntent please get my balance from the account
+BalanceIntent get me the balance from my account
+BalanceIntent get me the balance from the account
+BalanceIntent get me my balance from the account
+BalanceIntent get the balance from my account
+BalanceIntent get the balance from the account
+BalanceIntent get my balance 
+BalanceIntent get my balance from the account
+BalanceIntent please give me my balance
+BalanceIntent please give my balance
+BalanceIntent How much balance is there in the account
+BalanceIntent How much balance is there in my account
+BalanceIntent How much balance do I have in the account
+BalanceIntent How much balance do I have in my account
+BalanceIntent what is my account balance
+BalanceIntent please find out my balance
+BalanceIntent please find out the balance
 BalanceIntent find out my balance
-BalanceIntent find out my balances
-BalanceIntent find out my outstanding payment
-BalanceIntent find out my payment dues
-BalanceIntent find out my payment due
-BalanceIntent find out my due payment
-BalanceIntent find out my 
-BalanceIntent find out my outstanding balance
-BalanceIntent find out my remaining installment
-BalanceIntent find out my remaining dues
-BalanceIntent find out my dues remaining
-BalanceIntent what is my unpaid amount
-BalanceIntent what is my unpaid bill
-BalanceIntent what is the unpaid amount
-BalanceIntent what is the unpaid bill
-BalanceIntent what is my pending claim
-BalanceIntent what is the pending claim
-BalanceIntent How much am i liable to pay
-
-
-
+BalanceIntent find out the balance
+BalanceIntent could you please find out my balance
+BalanceIntent could you please find out the balance
+BalanceIntent could you find out my balance
+BalanceIntent could you find out the balance
+BalanceIntent please look for my balance in the account
+BalanceIntent please look for my balance
+BalanceIntent look for my balance in the account
+BalanceIntent look for my balance
 
 
 
@@ -99,6 +76,7 @@ PaymentIntent make a payment of {payment}
 PaymentIntent clear the balance
 PaymentIntent clear the payments
 PaymentIntent clear the dues
+PaymentIntent clear the Amount due
 PaymentIntent clear the bill
 PaymentIntent clear the outstanding
 PaymentIntent clear the debt
@@ -136,3 +114,7 @@ PaymentIntent pay off the entire bill amount
 PaymentIntent pay {payment}
 PaymentIntent pay a sum of {payment}
 PaymentIntent pay out {payment}
+
+
+
+AmountDueIntent
