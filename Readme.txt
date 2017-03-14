@@ -1,6 +1,5 @@
 This the readme for the Homesite Alexa project
 
-
 Folders
 
 src folder
@@ -9,3 +8,10 @@ src folder
  index.js: This is the lambda function where all the logic exists to call the PACE apis
  package.json: this is a descriptor file - not sure if we need it
  questions.js: this is a sample dependency file, it will ultimately be deleted
+
+
+Configuration
+
+Arn ( This is the id of the lambda function in AWS)
+ ----------
+ arn:aws:lambda:us-east-1:010605743487:function:Homesite
