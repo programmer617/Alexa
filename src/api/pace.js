@@ -9,6 +9,7 @@ var getOptions = function(){
 	      "Authorization": "Bearer 5fcef407807365c684f0bdefb9819d3c"
 	    }
 	};
+	
 	return options;
 };
 
