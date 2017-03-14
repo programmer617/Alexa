@@ -1,24 +1,8 @@
 "use strict";
 var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
-
-var BillingApiInfo = 
-{
-  "options": {
-    "hostname": "paceapi.homesitep2.com",
-    "port": 443,
-    "path": "/billing",
-    "method": "GET",
-    "headers": {
-      "User-Agent": "MyLambda/1.0.0 ( steve@ibm.com )",
-      "Authorization": "Bearer 5fcef407807365c684f0bdefb9819d3c"
-    }
-  }
-} 
-
 var Alexa = require("alexa-sdk");
 var https = require("https");
-
-var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
+var PACE = require("./api/pace");
 
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
@@ -28,9 +12,9 @@ exports.handler = function(event, context, callback) {
 };
 
 var balanceHandlers = {
-    "BalanceIntent":function(){
+    "BalanceIntent": function(){
 		// Call Pace Billing
-		const req = https.request(BillingApiInfo.options, (res) => {
+		const req = https.request(PACE.getBilling(), (res) => {
 			let body = '';
 			console.log('Status:', res.statusCode);
 			console.log('Headers:', JSON.stringify(res.headers));
