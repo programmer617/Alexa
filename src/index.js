@@ -17,7 +17,6 @@ var BillingApiInfo =
 
 var Alexa = require("alexa-sdk");
 var https = require("https");
-var _lodash = require('lodash');
 
 var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
 
@@ -44,12 +43,10 @@ var balanceHandlers = {
 					body = JSON.parse(body);
 					console.log('Body: ', body);
 					var speechOutput = "Your balance is $" + body.balance/100;		
-					speechOutput += " With billing method " + body.billing_method;
-					speechOutput += " And your amount due would be $" + body.amount_due/100;
-					speechOutput += " As of date " + new Date();
+					speechOutput += " with your next payment of $" + body.amount_due/100;
+					speechOutput += " due on " + body.next_payment_date;
 					this.emit(":tell",speechOutput);
 				}
-				//callback(null, body);
 			});
 		});
 		req.end();
