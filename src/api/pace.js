@@ -1,6 +1,6 @@
 'use strict';
 
-var getOptions = function(){
+var getOptions = function(){ 
 	var options = {
 	 	hostname: "paceapi.homesitep2.com",
 	    port: "443",

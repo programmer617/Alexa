@@ -2,7 +2,7 @@
 var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
 var Alexa = require("alexa-sdk");
 var https = require("https");
-var PACE = require("./api/pace");
+var PACE = require("./api/pace"); 
 
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
@@ -38,7 +38,7 @@ var balanceHandlers = {
 };
 
 var paymentHandlers = {
-    "BalanceIntent": function(){
+    "PaymentIntent": function(){
 		// Call Pace Payment
 		const req = https.request(PACE.postPayment(), (res) => {
 			let body = '';
@@ -60,7 +60,8 @@ var paymentHandlers = {
 				}
 			});
 		});
-		req.write('{"amount": "1"}')
+		console.log(JSON.stringify({ amount: intent.slots.paymentAmount.value}))
+		req.write(JSON.stringify({ amount: intent.slots.paymentAmount.value}))
 		req.end();
 	}
 };
