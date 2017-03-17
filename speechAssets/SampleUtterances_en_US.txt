@@ -71,7 +71,8 @@ BalanceIntent look for my balance
 
 
 PaymentIntent make a payment
-PaymentIntent make a payment of {payment}
+PaymentIntent make a payment of {paymentAmount}
+PaymentIntent make a payment in the amount of {paymentAmount}
 PaymentIntent clear the amount due
 PaymentIntent clear the balance
 PaymentIntent clear the outstanding balance
@@ -94,9 +95,9 @@ PaymentIntent pay off the entire balance
 PaymentIntent pay off the entire outstanding balance
 PaymentIntent pay off the entire outstanding amount
 PaymentIntent pay off the entire remaining balance
-PaymentIntent pay {payment}
-PaymentIntent pay a sum of {payment}
-PaymentIntent pay off {payment}
+PaymentIntent pay {paymentAmount}
+PaymentIntent pay a sum of {paymentAmount}
+PaymentIntent pay off {paymentAmount}
 PaymentIntent pay amount due in full
 PaymentIntent pay amount due
 PaymentIntent pay balance in full
