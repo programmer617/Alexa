@@ -38,7 +38,7 @@ var balanceHandlers = {
 };
 
 var paymentHandlers = {
-    "PaymentIntent": function(){
+    "PaymentIntent": function(intent, session, response){
 		// Call Pace Payment
 		const req = https.request(PACE.postPayment(), (res) => {
 			let body = '';
@@ -60,8 +60,13 @@ var paymentHandlers = {
 				}
 			});
 		});
-		console.log(JSON.stringify({ amount: intent.slots.paymentAmount.value}))
-		req.write(JSON.stringify({ amount: intent.slots.paymentAmount.value}))
+		var theAmount = this.event.request.intent.slots.paymentAmount.value;
+		console.log(theAmount);
+		var obj = {
+			"amount": theAmount
+		};
+		console.log(JSON.stringify(obj));
+		req.write(JSON.stringify(obj));
 		req.end();
 	}
 };
