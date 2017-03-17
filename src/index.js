@@ -42,6 +42,7 @@ var paymentHandlers = {
 		// Call Pace Payment
 		const req = https.request(PACE.postPayment(), (res) => {
 			let body = '';
+			//console.log(PACE.postPayment());
 			console.log('Status:', res.statusCode);
 			console.log('Headers:', JSON.stringify(res.headers));
 			res.setEncoding('utf8');
@@ -61,12 +62,13 @@ var paymentHandlers = {
 			});
 		});
 		var theAmount = this.event.request.intent.slots.paymentAmount.value;
-		console.log(theAmount);
+		console.log('paymentAmount.value: ', theAmount);
 		var obj = {
 			"amount": theAmount
 		};
-		console.log(JSON.stringify(obj));
-		req.write(JSON.stringify(obj));
+		var postJson = JSON.stringify(obj);
+		console.log('Post body: ', postJson);
+		req.write(postJson);
 		req.end();
 	}
 };
