@@ -24,7 +24,7 @@ module.exports = {
 	postPayment: function(){
 		var options = getOptions();
 		options.method ="POST";
-		options.path = "/billing/payment";
+		options.path = "/billing/payments";
 		return options;
 	}
 }
