@@ -15,7 +15,7 @@ var getOptions = function(){
 
 module.exports = {
 
-	getBilling: function(){
+	getBalance: function(){
 		var options = getOptions();
 		options.method ="GET";
 		options.path = "/billing";
