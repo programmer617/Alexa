@@ -50,7 +50,7 @@ var balanceHandlers = {
 };
 
 var paymentHandlers = {
-    "BalanceIntent": function(){
+    "PaymentIntent": function(){
 		// Call Pace Payment
 		const req = https.request(PACE.postPayment(), (res) => {
 			let body = '';
