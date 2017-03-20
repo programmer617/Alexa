@@ -1,4 +1,16 @@
 {"intents": [
+	{
+	  "intent": "BalanceIntent"
+	},
+    {
+	  "intent": "PaymentIntent",
+      "slots": [
+        {
+          "name": "paymentAmount",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
     {"intent": "AnswerIntent", "slots": [{"name": "Answer", "type": "AMAZON.NUMBER"}]},
     {"intent": "DontKnowIntent"},
     {"intent": "AMAZON.StartOverIntent"},
