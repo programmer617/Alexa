@@ -50,8 +50,29 @@ var balanceHandlers = {
 };
 
 var paymentHandlers = {
-    "PaymentIntent": function(){
+    "BalanceIntent": function(){
 		// Call Pace Payment
-		console.log('In PaymentIntent')
+		const req = https.request(PACE.postPayment(), (res) => {
+			let body = '';
+			console.log('Status:', res.statusCode);
+			console.log('Headers:', JSON.stringify(res.headers));
+			res.setEncoding('utf8');
+			res.on('data', (chunk) => body += chunk);
+			res.on('end', () => {
+				console.log('Successfully processed HTTPS response');
+				// If we know it's JSON, parse it
+				if (res.headers['content-type'] === 'application/json') {
+					body = JSON.parse(body);
+					console.log('Body: ', body);
+					var speechOutput = "Your credit card ending in " + body.card_last4;		
+					speechOutput += " has been charged $" + body.amount/100;
+					speechOutput += " your new balance is $" + body.new_balance/100;
+					speechOutput += " due on " + body.next_payment_date;
+					this.emit(":tell",speechOutput);
+				}
+			});
+		});
+		req.write('{"amount": "1"}')
+		req.end();
 	}
 };
