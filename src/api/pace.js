@@ -19,9 +19,8 @@ module.exports = {
 	getBalance: function(){
 		var options = getOptions();
 		options.method ="GET";
-		//options.qs = {from: 'blog example', time: +new Date()};
-		//options.path = "/billing";
-		options.url = "https://paceapi.homesitep2.com/billing";
+		options.path = "/billing";
+		//options.url = "https://paceapi.homesitep2.com/billing";
 		return options;
 	},
 	postPayment: function(data){
