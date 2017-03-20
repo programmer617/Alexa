@@ -32,13 +32,20 @@ var callPace = function(options, callback, context){
 var speechResponse = function(body){
 	body = JSON.parse(body);
 	console.log('Body: ', body);
- 	//add specific speech response here by querying the object body that comes back
- 	//not particularly a good way of figuring out what speech to create but maybe good enough for the demo
-	if(body.hasOwnProperty('amount_due')){
-		var speechOutput = "Your balance is $" + body.balance/100;		
+	var speechOutput;
+
+	if(this.event.request.intent.name === 'BalanceIntent'){
+		speechOutput = "Your balance is $" + body.balance/100;		
 		speechOutput += " with your next payment of $" + body.amount_due/100;
 		speechOutput += " due on " + body.next_payment_date;
 		this.emit(":tell", speechOutput);
+	}
+	if(this.event.request.intent.name === 'PaymentIntent'){
+		speechOutput = "Your credit card ending in " + body.card_last4;		
+		speechOutput += " has been charged $" + body.amount/100;
+		speechOutput += " your new balance is $" + body.new_balance/100;
+		speechOutput += " due on " + body.next_payment_date;
+		this.emit(":tell",speechOutput);
 	}
 };
 
