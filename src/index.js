@@ -79,7 +79,14 @@ var paymentHandlers = {
 				}
 			});
 		});
-		req.write('{"amount": "1"}')
+		var theAmount = this.event.request.intent.slots.paymentAmount.value;
+		console.log('paymentAmount.value: ', theAmount);
+		var obj = {
+			"amount": theAmount
+		};
+		var postJson = JSON.stringify(obj);
+		console.log('Post body: ', postJson);
+		req.write(postJson);
 		req.end();
 	}
 };
