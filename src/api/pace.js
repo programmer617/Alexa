@@ -23,13 +23,16 @@ module.exports = {
 		//options.url = "https://paceapi.homesitep2.com/billing";
 		return options;
 	},
-	postPayment: function(data){
+	postPayment: function(){
 		var options = getOptions();
 		options.method = "POST";
 		options.path = "/billing/payments";
-		// options.url = "https://paceapi.homesitep2.com/billing/payments";
-		// options.json = data
-		// console.log('data.amount ', data.amount);
 		return options;
 	}
+    sendConfirmation: function (data) {
+        var options = getOptions();
+        options.method = "POST";
+        options.path = "/billing/confirmation";
+        return options;
+    }
 }

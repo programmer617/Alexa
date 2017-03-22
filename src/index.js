@@ -48,18 +48,22 @@ var speechResponse = function(body){
 		speechOutput += " due on " + body.next_payment_date;
 		this.emit(":tell",speechOutput);
 	}
+    if (this.event.request.intent.name === 'ConfirmationIntent') {
+        speechOutput = "You have recieved your confirmation ";
+        speechOutput += " on your email " + body.recipient;
+        speechOutput += " with the subject " + body.subject;
+        this.emit(":tell", speechOutput);
+    }
 };
 
 var balanceHandlers = {
     "BalanceIntent": function(){
-		// Call Pace Billing
 		callPace(PACE.getBalance(), speechResponse, this);
 	}
 };
 
 var paymentHandlers = {
     "PaymentIntent": function(){
-		// Call Pace Payment
 		const req = https.request(PACE.postPayment(), (res) => {
 			let body = '';
 			console.log('Status:', res.statusCode);
@@ -90,4 +94,11 @@ var paymentHandlers = {
 		req.write(postJson);
 		req.end();
 	},
+};
+
+var confirmationhandlers = {
+    "ConfirmationIntent": function () {      
+        console.log('In ConfirmationIntent')
+        callPace(PACE.sendConfirmation(), speechResponse, this);
+    }
 };
