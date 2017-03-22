@@ -29,7 +29,7 @@ module.exports = {
 		options.path = "/billing/payments";
 		return options;
 	}
-    sendConfirmation: function (data) {
+    sendConfirmation: function () {
         var options = getOptions();
         options.method = "POST";
         options.path = "/billing/confirmation";
