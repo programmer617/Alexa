@@ -38,7 +38,8 @@ var speechResponse = function(body){
 		speechOutput = "Your balance is $" + body.balance/100;		
 		speechOutput += " with your next payment of $" + body.amount_due/100;
 		speechOutput += " due on " + body.next_payment_date;
-		this.emit(":tell", speechOutput);
+		this.emit(":ask", speechOutput, 'What would you like to do next?');
+		//Alexa: How much would you like topay
 	}
 	if(this.event.request.intent.name === 'PaymentIntent'){
 		speechOutput = "Your credit card ending in " + body.card_last4;		
@@ -88,5 +89,5 @@ var paymentHandlers = {
 		console.log('Post body: ', postJson);
 		req.write(postJson);
 		req.end();
-	}
+	},
 };
