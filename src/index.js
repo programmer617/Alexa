@@ -7,7 +7,7 @@ var PACE = require("./api/pace");
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
     alexa.appId = APP_ID;
-	alexa.registerHandlers(balanceHandlers, paymentHandlers);
+	alexa.registerHandlers(balanceHandlers, paymentHandlers, confirmationHandlers);
     alexa.execute();
 };
 
@@ -96,7 +96,7 @@ var paymentHandlers = {
 	},
 };
 
-var confirmationhandlers = {
+var confirmationHandlers = {
     "ConfirmationIntent": function () {      
         console.log('In ConfirmationIntent')
         callPace(PACE.sendConfirmation(), speechResponse, this);
