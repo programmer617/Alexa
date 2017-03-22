@@ -1,0 +1,22 @@
+
+
+Alexa Balance Conversation:
+
+ User: Alexa, Ask Homesite Get me my balance
+Alexa: Your balance is $100 with your next payment of $20 due on April 1st.
+       Would you like to make a payment or know additional account information?
+
+'Make a payment' convo
+User: I'd like to make a payment of $10.50
+Alexa: You would like to make a payment of $10.50?
+User: Yes.
+Alexa: Please wait while we update your account. 
+Alexa: Thank you for being patient. Your credit card ending in 4444
+	has been charged $10.50. Your balance is $89.50 and your next payment is due on 4/1.
+
+'Additional account information' convo
+User: Give me my account details.
+Alexa: Your last payment date was on 3/1/2017 and your payment method was Visa
+
+User: Please send me a confirmation:
+Alexa: Your account has just received a payment of $10.50 and an email has been sent to xxxxx@xxx.com
