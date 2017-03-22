@@ -1,118 +1,102 @@
-AnswerIntent the answer is true {Answer}
-AnswerIntent my answer is {Answer}
-AnswerIntent is it {Answer}
-AnswerIntent {Answer} is my answer
-AnswerIntent {Answer}
-
-DontKnowIntent i don't know
-DontKnowIntent don't know
-DontKnowIntent skip
-DontKnowIntent i don't know that
-DontKnowIntent who knows
-DontKnowIntent i don't know this question
-DontKnowIntent i don't know that one
-DontKnowIntent dunno
-
-BalanceIntent my outstanding balance
-BalanceIntent my balance
-BalanceIntent the outstanding balance
-BalanceIntent the balance
-BalanceIntent what is my outstanding balance
-BalanceIntent what is my balance
-BalanceIntent check my balance
-BalanceIntent check my outstanding balance
-BalanceIntent get me my balance
-BalanceIntent get me my balances
-BalanceIntent get me my outstanding balance
-BalanceIntent give me my outstanding balance
-BalanceIntent give my outstanding balance
-BalanceIntent give my balance
-BalanceIntent How much balance is due
-BalanceIntent what is my account balance
-BalanceIntent please check my balance
-BalanceIntent please get me my balance
-BalanceIntent please get me the balance
-BalanceIntent please get my balance
-BalanceIntent please get the balance
-BalanceIntent get me my balance
-BalanceIntent get me the balance
-BalanceIntent get my balance
-BalanceIntent get the balance
-BalanceIntent please get me the balance from the account
-BalanceIntent please get me my balance from the account
-BalanceIntent please get the balance from the account
-BalanceIntent please get my balance from the account
-BalanceIntent get me the balance from my account
-BalanceIntent get me the balance from the account
-BalanceIntent get me my balance from the account
-BalanceIntent get the balance from my account
-BalanceIntent get the balance from the account
-BalanceIntent get my balance 
-BalanceIntent get my balance from the account
-BalanceIntent please give me my balance
-BalanceIntent please give my balance
-BalanceIntent How much balance is there in the account
-BalanceIntent How much balance is there in my account
-BalanceIntent How much balance do I have in the account
-BalanceIntent How much balance do I have in my account
-BalanceIntent what is my account balance
-BalanceIntent please find out my balance
-BalanceIntent please find out the balance
-BalanceIntent find out my balance
-BalanceIntent find out the balance
-BalanceIntent could you please find out my balance
-BalanceIntent could you please find out the balance
-BalanceIntent could you find out my balance
-BalanceIntent could you find out the balance
-BalanceIntent please look for my balance in the account
-BalanceIntent please look for my balance
-BalanceIntent look for my balance in the account
-BalanceIntent look for my balance
-
-
-PaymentIntent make a payment
-PaymentIntent make a payment of {paymentAmount}
-PaymentIntent make a payment in the amount of {paymentAmount}
-PaymentIntent clear the amount due
-PaymentIntent clear the balance
-PaymentIntent clear the outstanding balance
-PaymentIntent clear the outstanding amount
-PaymentIntent clear the remaining balance
-PaymentIntent clear my amount due
-PaymentIntent clear my balance
-PaymentIntent clear my outstanding balance
-PaymentIntent clear my outstanding amount
-PaymentIntent clear my remaining balance
-PaymentIntent pay my amount due
-PaymentIntent pay my balance
-PaymentIntent pay the amount due
-PaymentIntent pay the balance
-PaymentIntent pay the outstanding balance
-PaymentIntent pay the outstanding amount
-PaymentIntent pay the remaining balance
-PaymentIntent pay off the entire amount due
-PaymentIntent pay off the entire balance
-PaymentIntent pay off the entire outstanding balance
-PaymentIntent pay off the entire outstanding amount
-PaymentIntent pay off the entire remaining balance
-PaymentIntent pay {paymentAmount}
-PaymentIntent pay a sum of {paymentAmount}
-PaymentIntent pay off {paymentAmount}
-PaymentIntent pay amount due in full
-PaymentIntent pay amount due
-PaymentIntent pay balance in full
-PaymentIntent pay balance
-PaymentIntent pay outstanding balance in full
-PaymentIntent pay outstanding balance
-PaymentIntent pay outstanding amount in full
-PaymentIntent pay outstanding amount
-PaymentIntent pay remaining balance in full
-PaymentIntent pay remaining balance
-PaymentIntent pay entire amount due
-PaymentIntent pay entire balance
-PaymentIntent pay entire outstanding balance
-PaymentIntent pay entire outstanding amount
-PaymentIntent pay entire remaining balance
-
-
-AmountDueIntent
+BalanceIntent 	my outstanding balance
+BalanceIntent 	my balance
+BalanceIntent 	the outstanding balance
+BalanceIntent 	the balance
+BalanceIntent 	what is my outstanding balance
+BalanceIntent 	what is my balance
+BalanceIntent 	check my balance
+BalanceIntent 	check my outstanding balance
+BalanceIntent 	get me my balance
+BalanceIntent 	get me my outstanding balance
+BalanceIntent 	give me my outstanding balance
+BalanceIntent 	give my outstanding balance
+BalanceIntent 	give my balance
+BalanceIntent 	How much balance is due
+BalanceIntent 	what is my account balance
+BalanceIntent 	please check my balance
+BalanceIntent 	please get me my balance
+BalanceIntent 	please get me the balance
+BalanceIntent 	please get my balance
+BalanceIntent 	please get the balance
+BalanceIntent 	get me my balance
+BalanceIntent 	get me the balance
+BalanceIntent 	get my balance
+BalanceIntent 	get the balance
+BalanceIntent 	please get me the balance from the account
+BalanceIntent 	please get me my balance from the account
+BalanceIntent 	please get the balance from the account
+BalanceIntent 	please get my balance from the account
+BalanceIntent 	get me the balance from my account
+BalanceIntent 	get me the balance from the account
+BalanceIntent 	get me my balance from the account
+BalanceIntent 	get the balance from my account
+BalanceIntent 	get the balance from the account
+BalanceIntent 	get my balance 
+BalanceIntent 	get my balance from the account
+BalanceIntent 	please give me my balance
+BalanceIntent 	please give my balance
+BalanceIntent 	How much balance is there in the account
+BalanceIntent 	How much balance is there in my account
+BalanceIntent 	How much balance do I have in the account
+BalanceIntent 	How much balance do I have in my account
+BalanceIntent 	what is my account balance
+BalanceIntent 	please find out my balance
+BalanceIntent 	please find out the balance
+BalanceIntent 	find out my balance
+BalanceIntent 	find out the balance
+BalanceIntent 	could you please find out my balance
+BalanceIntent 	could you please find out the balance
+BalanceIntent 	could you find out my balance
+BalanceIntent 	could you find out the balance
+BalanceIntent 	please look for my balance in the account
+BalanceIntent 	please look for my balance
+BalanceIntent 	look for my balance in the account
+BalanceIntent 	look for my balance
+	
+PaymentIntent 	make a payment
+PaymentIntent 	make a payment of {payment}
+PaymentIntent 	clear the amount due
+PaymentIntent 	clear the balance
+PaymentIntent 	clear the outstanding balance
+PaymentIntent 	clear the outstanding amount
+PaymentIntent 	clear the remaining balance
+PaymentIntent 	clear my amount due
+PaymentIntent 	clear my balance
+PaymentIntent 	clear my outstanding balance
+PaymentIntent 	clear my outstanding amount
+PaymentIntent 	clear my remaining balance
+PaymentIntent 	pay my amount due
+PaymentIntent 	pay my balance
+PaymentIntent 	pay the amount due
+PaymentIntent 	pay the balance
+PaymentIntent 	pay the outstanding balance
+PaymentIntent 	pay the outstanding amount
+PaymentIntent 	pay the remaining balance
+PaymentIntent 	pay off the entire amount due
+PaymentIntent 	pay off the entire balance
+PaymentIntent 	pay off the entire outstanding balance
+PaymentIntent 	pay off the entire outstanding amount
+PaymentIntent 	pay off the entire remaining balance
+PaymentIntent 	pay {payment}
+PaymentIntent 	pay a sum of {payment}
+PaymentIntent 	pay off {payment}
+PaymentIntent 	pay amount due in full
+PaymentIntent 	pay amount due
+PaymentIntent 	pay balance in full
+PaymentIntent 	pay balance
+PaymentIntent 	pay outstanding balance in full
+PaymentIntent 	pay outstanding balance
+PaymentIntent 	pay outstanding amount in full
+PaymentIntent 	pay outstanding amount
+PaymentIntent 	pay remaining balance in full
+PaymentIntent 	pay remaining balance
+PaymentIntent 	pay entire amount due
+PaymentIntent 	pay entire balance
+PaymentIntent 	pay entire outstanding balance
+PaymentIntent 	pay entire outstanding amount
+PaymentIntent 	pay entire remaining balance
+	
+ConfirmationIntent  	Confirm payment 
+ConfirmationIntent  	Confirm transaction
+ConfirmationIntent  	Confirmed 
+ConfirmationIntent  	Yes Confirm 

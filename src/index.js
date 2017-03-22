@@ -38,7 +38,7 @@ var speechResponse = function(body){
 		speechOutput = "Your balance is $" + body.balance/100;		
 		speechOutput += " with your next payment of $" + body.amount_due/100;
 		speechOutput += " due on " + body.next_payment_date;
-		this.emit(":ask", speechOutput, 'What would you like to do next?');
+		this.emit(":tell", speechOutput);
 		//Alexa: How much would you like topay
 	}
 	if(this.event.request.intent.name === 'PaymentIntent'){
@@ -58,13 +58,21 @@ var speechResponse = function(body){
 
 var balanceHandlers = {
     "BalanceIntent": function(){
-		callPace(PACE.getBalance(), speechResponse, this);
+		if (this.event.session.user.accessToken == undefined) {
+            this.emit(':tellWithLinkAccountCard', 'to start using this skill, please use the companion app to authenticate on Amazon');
+            return;
+        }
+		callPace(PACE.getBalance(this.event.session.user.accessToken), speechResponse, this);
 	}
 };
 
 var paymentHandlers = {
     "PaymentIntent": function(){
-		const req = https.request(PACE.postPayment(), (res) => {
+		if (this.event.session.user.accessToken == undefined) {
+            this.emit(':tellWithLinkAccountCard', 'to start using this skill, please use the companion app to authenticate on Amazon');
+            return;
+        }
+		const req = https.request(PACE.postPayment(this.event.session.user.accessToken), (res) => {
 			let body = '';
 			console.log('Status:', res.statusCode);
 			console.log('Headers:', JSON.stringify(res.headers));
@@ -97,8 +105,13 @@ var paymentHandlers = {
 };
 
 var confirmationHandlers = {
-    "ConfirmationIntent": function () {      
+    "ConfirmationIntent": function () {
+		if (this.event.session.user.accessToken == undefined) {
+            this.emit(':tellWithLinkAccountCard', 'to start using this skill, please use the companion app to authenticate on Amazon');
+            return;
+        }		
         console.log('In ConfirmationIntent')
-        callPace(PACE.sendConfirmation(), speechResponse, this);
+        callPace(PACE.sendConfirmation(this.event.session.user.accessToken), speechResponse, this);
     }
 };
+
