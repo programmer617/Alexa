@@ -92,7 +92,7 @@ var paymentHandlers = {
 				}
 			});
 		});
-		var theAmount = this.event.request.intent.slots.paymentAmount.value;
+		var theAmount = this.event.request.intent.slots.payment.value;
 		console.log('paymentAmount.value: ', theAmount);
 		var obj = {
 			"amount": theAmount
