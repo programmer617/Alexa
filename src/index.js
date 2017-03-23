@@ -38,16 +38,16 @@ var speechResponse = function(body){
 		speechOutput = "Your balance is $" + body.balance/100;		
 		speechOutput += " with your next payment of $" + body.amount_due/100;
 		speechOutput += " due on " + body.next_payment_date;
-		this.emit(":tell", speechOutput);
+		this.emit(":ask", speechOutput, "What would you like to do? Say make a payment");
 		//Alexa: How much would you like topay
 	}
-	if(this.event.request.intent.name === 'PaymentIntent'){
-		speechOutput = "Your credit card ending in " + body.card_last4;		
-		speechOutput += " has been charged $" + body.amount/100;
-		speechOutput += " your new balance is $" + body.new_balance/100;
-		speechOutput += " due on " + body.next_payment_date;
-		this.emit(":tell",speechOutput);
-	}
+	// if(this.event.request.intent.name === 'PaymentIntent'){
+		// speechOutput = "Your credit card ending in " + body.card_last4;		
+		// speechOutput += " has been charged $" + body.amount/100;
+		// speechOutput += " your new balance is $" + body.new_balance/100;
+		// speechOutput += " due on " + body.next_payment_date;
+		// this.emit(":tell",speechOutput);
+	// }
     if (this.event.request.intent.name === 'ConfirmationIntent') {
         speechOutput = "You have recieved your confirmation ";
         speechOutput += " on your email " + body.recipient;
@@ -72,6 +72,10 @@ var paymentHandlers = {
             this.emit(':tellWithLinkAccountCard', 'to start using this skill, please use the companion app to authenticate on Amazon');
             return;
         }
+		if (this.event.request.intent.slots.payment.value == undefined) {
+			this.emit(':ask', 'Please specify the amount you want to pay', 'for example one dollar');
+			return;
+		}
 		const req = https.request(PACE.postPayment(this.event.session.user.accessToken), (res) => {
 			let body = '';
 			console.log('Status:', res.statusCode);
@@ -84,7 +88,7 @@ var paymentHandlers = {
 				if (res.headers['content-type'] === 'application/json') {
 					body = JSON.parse(body);
 					console.log('Body: ', body);
-					var speechOutput = "Your credit card ending in " + body.card_last4;		
+					var speechOutput = 'Your credit card ending in <say-as interpret-as="digits">' + body.card_last4 + '</say-as>';		
 					speechOutput += " has been charged $" + body.amount/100;
 					speechOutput += " your new balance is $" + body.new_balance/100;
 					speechOutput += " due on " + body.next_payment_date;
@@ -92,7 +96,7 @@ var paymentHandlers = {
 				}
 			});
 		});
-		var theAmount = this.event.request.intent.slots.payment.value;
+		var theAmount = parseInt(this.event.request.intent.slots.payment.value);// * 100;
 		console.log('paymentAmount.value: ', theAmount);
 		var obj = {
 			"amount": theAmount
@@ -101,7 +105,8 @@ var paymentHandlers = {
 		console.log('Post body: ', postJson);
 		req.write(postJson);
 		req.end();
-	},
+	}
+
 };
 
 var confirmationHandlers = {
