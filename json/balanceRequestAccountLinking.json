@@ -1,0 +1,25 @@
+{
+  "session": {
+    "sessionId": "SessionId.1ee5fcd6-a8e8-44cf-a890-bb3d694df2bb",
+    "application": {
+      "applicationId": "amzn1.ask.skill.3eaf1f19-6859-49c8-b2f6-d91bd8ea3e9a"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AGTMZZJE2EHJRJVRQCEUO5ZR2QKYOUUITP2H43B4YRLTQB2KAMF2ZZSAGM34NCJFVMPXVHOPZHEBMMJB3X57GOQPYWWRZQRZM425OKVF73TXPO37PW23TNSZFTAPU3MKHDMXYZ6QDF4YXLH57FVLCVEX75KOIIJMDJK3GDBBTEIPMTRRYU6IFSFVTYWH2R3QFFSJORSR4SZDRWI",
+      "accessToken": "212c10eb6f93c3c9c5117bcd21b179cc"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.d82fdcbe-e0a1-4042-b87d-be096d21dbbc",
+    "locale": "en-US",
+    "timestamp": "2017-03-23T16:06:30Z",
+    "intent": {
+      "name": "BalanceIntent",
+      "slots": {}
+    }
+  },
+  "version": "1.0"
+}
