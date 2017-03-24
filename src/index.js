@@ -36,6 +36,7 @@ var speechResponse = function(body){
 
 	if(this.event.request.intent.name === 'BalanceIntent'){
 		speechOutput = "Your balance is $" + body.balance/100;		
+        this.event.session.attributes.fullamount =  body.balance/100;
 		speechOutput += " with your next payment of $" + body.amount_due/100;
 		speechOutput += " due on " + body.next_payment_date;
 		this.emit(":ask", speechOutput, "What would you like to do? Say make a payment");
@@ -68,45 +69,81 @@ var balanceHandlers = {
 
 var paymentHandlers = {
     "PaymentIntent": function(){
-		if (this.event.session.user.accessToken == undefined) {
+        if (this.event.session.user.accessToken == undefined) {
             this.emit(':tellWithLinkAccountCard', 'to start using this skill, please use the companion app to authenticate on Amazon');
             return;
         }
-		if (this.event.request.intent.slots.payment.value == undefined) {
-			this.emit(':ask', 'Please specify the amount you want to pay', 'for example one dollar');
-			return;
-		}
-		const req = https.request(PACE.postPayment(this.event.session.user.accessToken), (res) => {
-			let body = '';
-			console.log('Status:', res.statusCode);
-			console.log('Headers:', JSON.stringify(res.headers));
-			res.setEncoding('utf8');
-			res.on('data', (chunk) => body += chunk);
-			res.on('end', () => {
-				console.log('Successfully processed HTTPS response');
-				// If we know it's JSON, parse it
-				if (res.headers['content-type'] === 'application/json') {
-					body = JSON.parse(body);
-					console.log('Body: ', body);
-					var speechOutput = 'Your credit card ending in <say-as interpret-as="digits">' + body.card_last4 + '</say-as>';		
-					speechOutput += " has been charged $" + body.amount/100;
-					speechOutput += " your new balance is $" + body.new_balance/100;
-					speechOutput += " due on " + body.next_payment_date;
-					this.emit(":tell",speechOutput);
-				}
-			});
-		});
-		var theAmount = parseInt(this.event.request.intent.slots.payment.value);// * 100;
-		console.log('paymentAmount.value: ', theAmount);
-		var obj = {
-			"amount": theAmount
-		};
-		var postJson = JSON.stringify(obj);
-		console.log('Post body: ', postJson);
-		req.write(postJson);
-		req.end();
-	}
+        if (this.event.request.intent.slots.payment.value == undefined) {
+            this.emit(':ask', 'Please specify the amount you want to pay', 'for example one dollar or pay in full');
+            return;
+        }
+        const req = https.request(PACE.postPayment(this.event.session.user.accessToken), (res) => {
+            let body = '';
+            console.log('Status:', res.statusCode);
+            console.log('Headers:', JSON.stringify(res.headers));
+            res.setEncoding('utf8');
+            res.on('data', (chunk) => body += chunk);
+            res.on('end', () => {
+                console.log('Successfully processed HTTPS response');
+                // If we know it's JSON, parse it
+                if (res.headers['content-type'] === 'application/json') {
+                    body = JSON.parse(body);
+                    console.log('Body: ', body);
+                    var speechOutput = 'Your credit card ending in <say-as interpret-as="digits">' + body.card_last4 + '</say-as>';     
+                    speechOutput += " has been charged $" + body.amount/100;
+                    speechOutput += " your new balance is $" + body.new_balance/100;
+                    speechOutput += " due on " + body.next_payment_date;
+                    this.emit(":tell",speechOutput);
+                }
+            });
+        });
+        var theAmount = parseInt(this.event.request.intent.slots.payment.value);// * 100;
+        console.log('paymentAmount.value: ', theAmount);
+        var obj = {
+            "amount": theAmount
+        };
+        var postJson = JSON.stringify(obj);
+        console.log('Post body: ', postJson);
+        req.write(postJson);
+        req.end();
+    },
 
+    "PayInFullIntent": function(){
+        if (this.event.session.user.accessToken == undefined) {
+            this.emit(':tellWithLinkAccountCard', 'to start using this skill, please use the companion app to authenticate on Amazon');
+            return;
+        }
+        // const req = https.request(PACE.postPayment(this.event.session.user.accessToken), (res) => {
+        //     let body = '';
+        //     console.log('Status:', res.statusCode);
+        //     console.log('Headers:', JSON.stringify(res.headers));
+        //     res.setEncoding('utf8');
+        //     res.on('data', (chunk) => body += chunk);
+        //     res.on('end', () => {
+        //         console.log('Successfully processed HTTPS response');
+        //         // If we know it's JSON, parse it
+        //         if (res.headers['content-type'] === 'application/json') {
+        //             body = JSON.parse(body);
+        //             console.log('Body: ', body);
+        //             var speechOutput = 'Your credit card ending in <say-as interpret-as="digits">' + body.card_last4 + '</say-as>';     
+        //             speechOutput += " has been charged $" + body.amount/100;
+        //             speechOutput += " your new balance is $" + body.new_balance/100;
+        //             speechOutput += " due on " + body.next_payment_date;
+        //             this.emit(":tell",speechOutput);
+        //         }
+        //     });
+        // });
+        var theAmount = this.event.session.attributes.fullamount;// * 100;
+        this.emit(':tell', 'Amount to be paid ' + theAmount);
+        console.log('attributes.fullamount: ', theAmount);
+        var obj = {
+            "amount": theAmount
+        };
+        var postJson = JSON.stringify(obj);
+        console.log('Post body: ', postJson);
+        // req.write(postJson);
+        // req.end();
+    }
 };
 
 var confirmationHandlers = {
