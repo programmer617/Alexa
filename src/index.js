@@ -39,7 +39,7 @@ var speechResponse = function(body){
         this.event.session.attributes.fullamount =  body.balance/100;
 		speechOutput += " with your next payment of $" + body.amount_due/100;
 		speechOutput += " due on " + body.next_payment_date;
-		this.emit(":ask", speechOutput, "What would you like to do? Say make a payment");
+		this.emit(":ask", speechOutput, "What would you like to do now? Say make a payment, or, i'm done");
 		//Alexa: How much would you like topay
 	}
 	// if(this.event.request.intent.name === 'PaymentIntent'){
@@ -106,6 +106,7 @@ var paymentHandlers = {
         console.log('Post body: ', postJson);
         req.write(postJson);
         req.end();
+		this.emit(":ask", "What would you like to do now", "Say send a confirmation, or, i'm done");
     },
 
     "PayInFullIntent": function(){
@@ -143,6 +144,7 @@ var paymentHandlers = {
         console.log('Post body: ', postJson);
         // req.write(postJson);
         // req.end();
+		this.emit(":ask", "What would you like to do now", "Say send a confirmation, or, i'm done");
     }
 };
 
@@ -152,8 +154,17 @@ var confirmationHandlers = {
             this.emit(':tellWithLinkAccountCard', 'to start using this skill, please use the companion app to authenticate on Amazon');
             return;
         }		
-        console.log('In ConfirmationIntent')
+        console.log('In ConfirmationIntent');
         callPace(PACE.sendConfirmation(this.event.session.user.accessToken), speechResponse, this);
+		this.emit(":ask", "Confirmation sent, can I help you with anything else", "Say yes, or, i'm done");
+    },
+    "CompletionIntent": function () {
+		if (this.event.session.user.accessToken == undefined) {
+            this.emit(':tellWithLinkAccountCard', 'to start using this skill, please use the companion app to authenticate on Amazon');
+            return;
+        }		
+        console.log('In CompletionIntent');
+		this.emit(":tell", "Thank you for insuring with Homesite, goodbye");
     }
 };
 
