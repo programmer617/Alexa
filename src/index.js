@@ -26,7 +26,7 @@ var callPace = function(options, callback, context){
                 }
             });
          });
-         if (options.method === "POST"){
+         if (options.path === "/billing/payments"){
             var theAmount = parseInt(context.event.request.intent.slots.payment.value) * 100;
             console.log('paymentAmount.value: ', theAmount);
             var obj = {
