@@ -50,10 +50,10 @@ var speechResponse = function(body){
 		// this.emit(":tell",speechOutput);
 	// }
     if (this.event.request.intent.name === 'ConfirmationIntent') {
-        speechOutput = "You have recieved your confirmation ";
-        speechOutput += " on your email " + body.recipient;
+        speechOutput = "Confirmation email was sent to ";
+        speechOutput += body.recipient;
         speechOutput += " with the subject " + body.subject;
-        this.emit(":tell", speechOutput);
+        this.emit(":ask", speechOutput, "Can I help you with anything else, say yes, or, i'm done");
     }
 };
 
@@ -93,11 +93,11 @@ var paymentHandlers = {
                     speechOutput += " has been charged $" + body.amount/100;
                     speechOutput += " your new balance is $" + body.new_balance/100;
                     speechOutput += " due on " + body.next_payment_date;
-                    this.emit(":tell",speechOutput);
+                    this.emit(":ask", speechOutput, "What would you like to do now, say send a confirmation, or, i'm done");
                 }
             });
         });
-        var theAmount = parseInt(this.event.request.intent.slots.payment.value);// * 100;
+        var theAmount = parseInt(this.event.request.intent.slots.payment.value) * 100;
         console.log('paymentAmount.value: ', theAmount);
         var obj = {
             "amount": theAmount
@@ -106,7 +106,8 @@ var paymentHandlers = {
         console.log('Post body: ', postJson);
         req.write(postJson);
         req.end();
-		this.emit(":ask", "What would you like to do now", "Say send a confirmation, or, i'm done");
+		//theAmount = theAmount / 100;
+		//this.emit(":ask", "Your payment of $" +  theAmount + " was successful, what would you like to do now", "Say send a confirmation, or, i'm done");
     },
 
     "PayInFullIntent": function(){
@@ -134,7 +135,7 @@ var paymentHandlers = {
         //         }
         //     });
         // });
-        var theAmount = this.event.session.attributes.fullamount;// * 100;
+        var theAmount = this.event.session.attributes.fullamount;
         this.emit(':tell', 'Amount to be paid ' + theAmount);
         console.log('attributes.fullamount: ', theAmount);
         var obj = {
@@ -144,7 +145,7 @@ var paymentHandlers = {
         console.log('Post body: ', postJson);
         // req.write(postJson);
         // req.end();
-		this.emit(":ask", "What would you like to do now", "Say send a confirmation, or, i'm done");
+		this.emit(":ask", "Your payment of $" +  theAmount + " was successful, what would you like to do now", "Say send a confirmation, or, i'm done");
     }
 };
 
@@ -156,7 +157,6 @@ var confirmationHandlers = {
         }		
         console.log('In ConfirmationIntent');
         callPace(PACE.sendConfirmation(this.event.session.user.accessToken), speechResponse, this);
-		this.emit(":ask", "Confirmation sent, can I help you with anything else", "Say yes, or, i'm done");
     },
     "CompletionIntent": function () {
 		if (this.event.session.user.accessToken == undefined) {
